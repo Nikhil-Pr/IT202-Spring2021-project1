@@ -46,7 +46,44 @@
             Inventory <br/> Select "Data" to view data from the Land Inventory <br/> Select "Map" to see locations</h5>
     </div>
 
+
+
     <div class="screen" id="filter">
+        <h1 class="text-center text-white">Filter Data</h1>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <label for="filterName" class="text-white">Community Area Name</label>
+                    <input type="text" class="form-control" id="filterName">
+                </div>
+                <div class="col">
+                    <label for="filterPin" class="text-white">Pin</label>
+                    <input type="text" class="form-control" id="filterPin">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="filterAddress" class="text-white">Address</label>
+                    <input type="text" class="form-control" id="filterAddress">
+                </div>
+                <div class="col">
+                    <label for="filterSqft" class="text-white">Square Footage</label>
+                    <input type="number" class="form-control" id="filterSqft">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="filterNumber" class="text-white">Community Area Number</label>
+                    <input type="number" class="form-control" id="filterNumber">
+                </div>
+                <div class="col">
+                    <label for="filterZIP" class="text-white">Zip Code</label>
+                    <input type="number" class="form-control" id="filterZIP">
+                </div>
+            </div>
+            <br />
+            <button type="submit" class="align-center btn btn-primary">Submit Filter</button>
+        </form>
     </div>
 
 
