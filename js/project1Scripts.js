@@ -38,7 +38,7 @@ function handleFilter(){
         fetchRequest += `&community_area_name=${filterName.value}`
     }
     if(filterPin.value !== ""){
-        fetchRequest += `&pin=${filterName.value}`
+        fetchRequest += `&pin=${filterPin.value}`
     }
     if(filterAddress.value !== ""){
         fetchRequest += `&address=${filterAddress.value}`
@@ -52,9 +52,7 @@ function handleFilter(){
     if(filterZIP.value !== ""){
         fetchRequest += `&zip_code=${filterZIP.value}`
     }
-
     console.log(fetchRequest)
-
 }
 
 
@@ -69,8 +67,21 @@ function loadFilter() {
 }
 
 function loadData(){
+    console.log(fetchRequest)
     targetView = document.querySelector("#data")
     targetView.style.display = "block";
+    let cardClone = document.querySelector(".infoCard").cloneNode(true)
+    document.querySelectorAll(".infoCard").forEach(item => item.parentNode.removeChild(item))
+    fetch(fetchRequest)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(row => {
+                let cardCloneLoop = cardClone.cloneNode(true)
+                cardCloneLoop.querySelector('.card-title').innerHTML = `${row.community_area_name} - ${row.pin}`
+                cardCloneLoop.querySelector('.card-text').innerHTML = `${row.address} - ${row.sq_ft}`
+                document.querySelector('#cards').appendChild(cardCloneLoop)
+            })
+        })
 }
 
 

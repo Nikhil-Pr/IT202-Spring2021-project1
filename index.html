@@ -54,17 +54,17 @@
         <div class="row">
             <div class="col">
                 <label for="filterName" class="text-white">Community Area Name</label>
-                <input type="text" class="form-control" id="filterName">
+                <input onkeyup="this.value = this.value.toUpperCase()" type="text" class="form-control" id="filterName">
             </div>
             <div class="col">
                 <label for="filterPin" class="text-white">Pin</label>
-                <input type="text" class="form-control" id="filterPin">
+                <input onkeyup="this.value = this.value.toUpperCase()" type="text" class="form-control" id="filterPin">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="filterAddress" class="text-white">Address</label>
-                <input type="text" class="form-control" id="filterAddress">
+                <input onkeyup="this.value = this.value.toUpperCase()" type="text" class="form-control" id="filterAddress">
             </div>
             <div class="col">
                 <label for="filterSqft" class="text-white">Square Footage</label>
@@ -89,13 +89,15 @@
     <!--DATA-->
     <div class="screen" id="data">
         <h1 class="text-center text-white">Data</h1>
-        <div class="row" id="infoCard">
+        <div id="cards">
+        <div class="row infoCard">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Community Area Name - Pin</h5>
                     <p class="card-text">Address - Square Footage</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
