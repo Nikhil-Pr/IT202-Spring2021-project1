@@ -21,6 +21,9 @@ navigationOptions.forEach((btn) => {
             case "data":
                 loadData()
                 break
+            case "about":
+                loadAbout()
+                break
         }
 
     })
@@ -82,6 +85,11 @@ function loadData(){
                 document.querySelector('#cards').appendChild(cardCloneLoop)
             })
         })
+}
+
+function loadAbout(){
+    targetView = document.querySelector("#about")
+    targetView.style.display = "block";
 }
 
 
