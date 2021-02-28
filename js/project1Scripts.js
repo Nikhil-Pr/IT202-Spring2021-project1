@@ -58,7 +58,7 @@ function handleFilter() {
     if (filterZIP.value !== "") {
         fetchRequest += `&zip_code=${filterZIP.value}`
     }
-    console.log(fetchRequest)
+    loadData()
 }
 
 
@@ -73,7 +73,6 @@ function loadFilter() {
 }
 
 function loadData() {
-    console.log(fetchRequest)
     targetView = document.querySelector("#data")
     targetView.style.display = "block";
     let cardClone = document.querySelector(".infoCard").cloneNode(true)
@@ -91,7 +90,6 @@ function loadData() {
 }
 
 function loadMap() {
-    console.log("loadmap")
     targetView = document.querySelector("#mapScreen")
     targetView.style.display = "block";
     const chicagoLatLng = {lat: 41.8781, lng: -87.6298}
