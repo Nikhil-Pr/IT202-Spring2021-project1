@@ -8,9 +8,7 @@ window.onload = () => {
 navigationOptions.forEach((btn) => {
 
     btn.addEventListener('click', function (event) {
-        document.querySelectorAll(".screen").forEach((screen) => {
-            screen.style.display = "none";
-        })
+        clearScreens()
         switch (event.target.getAttribute('data-screens')) {
             case "home":
                 loadHome()
@@ -58,9 +56,15 @@ function handleFilter() {
     if (filterZIP.value !== "") {
         fetchRequest += `&zip_code=${filterZIP.value}`
     }
+    clearScreens()
     loadData()
 }
 
+function clearScreens() {
+    document.querySelectorAll(".screen").forEach((screen) => {
+        screen.style.display = "none";
+    })
+}
 
 function loadHome() {
     targetView = document.querySelector("#home")
@@ -93,9 +97,9 @@ function loadMap() {
     targetView = document.querySelector("#mapScreen")
     targetView.style.display = "block";
     const chicagoLatLng = {lat: 41.8781, lng: -87.6298}
-    const dataMap = new google.maps.Map(document.getElementById("map"),{
-        zoom:11,
-        center:chicagoLatLng
+    const dataMap = new google.maps.Map(document.getElementById("map"), {
+        zoom: 11,
+        center: chicagoLatLng
     })
     fetch(fetchRequest)
         .then(response => response.json())
@@ -103,19 +107,19 @@ function loadMap() {
             data.forEach(row => {
                 let marker = new google.maps.Marker({
                     position: {lat: parseFloat(row.latitude), lng: parseFloat(row.longitude)},
-                    map:dataMap
+                    map: dataMap
                 })
                 let infoWindow = new google.maps.InfoWindow({
-                    position:{lat: parseFloat(row.latitude), lng:parseFloat(row.longitude)},
+                    position: {lat: parseFloat(row.latitude), lng: parseFloat(row.longitude)},
                     content:
-                    `
+                        `
                     <h4>${row.community_area_name ?? "No Community Area Name Specified"}</h4>
                     <h6>Pin: ${row.pin ?? "No Pin Specified"}</h6>
                     <h5>Address: ${row.address ?? "No Address Specified"} </h5>
                     <h6>Sqft:${row.sq_ft ?? "No Sqft Specified"}</h6>
                     `
                 })
-                marker.addListener("mouseover", () => infoWindow.open(dataMap,marker))
+                marker.addListener("mouseover", () => infoWindow.open(dataMap, marker))
                 marker.addListener("mouseout", () => infoWindow.close(dataMap, marker))
             })
         })
